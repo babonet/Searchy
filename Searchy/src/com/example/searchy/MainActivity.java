@@ -59,9 +59,9 @@ public class MainActivity extends FragmentActivity implements
 	protected void onResume() {
 		super.onResume();
 		EditText searchEditText = (EditText) findViewById(R.id.editText1);
-		
-		getMessages();
 		getPersons(); 
+		getMessages();
+		
 	}
 
 	private void getPersons() {

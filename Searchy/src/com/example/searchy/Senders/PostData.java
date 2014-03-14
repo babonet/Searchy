@@ -16,6 +16,7 @@ import com.example.searchy.Objects.Person;
 import com.example.searchy.Objects.SMSMessage;
 
 import android.os.AsyncTask;
+import android.util.Log;
 
 public class PostData<E>  extends AsyncTask<String, Void, String> {
 	
@@ -34,19 +35,21 @@ public class PostData<E>  extends AsyncTask<String, Void, String> {
     	HttpPost req = new HttpPost();
     	
     	try {
-			req.setURI(new URI("http://192.168.0.105:64458/api/messages"));
+			req.setURI(new URI("http://192.168.0.103:64458/api/messages"));
 		    req.addHeader("Content-Type", "application/json");
 		    for (E al: arrayList){
 		    	StringEntity se;
-		    	if (al.getClass().getName().toString() == "Person"){
+		    	if (al.getClass().getName().toString().endsWith("Person")){
 		    		se = new StringEntity(((Person) al).ToJSON().toString());
 	                req.setEntity(se);
 	                response = client.execute(req);
+	                Log.i(al.getClass().getName().toString(), response.toString());
 		    	}
-		    	if (al.getClass().getName().toString() == "SMSMessage"){
+		    	if (al.getClass().getName().toString().endsWith("SMSMessage")){
 		    		se = new StringEntity(((SMSMessage) al).ToJSON().toString());
 	                req.setEntity(se);
 	                response = client.execute(req);
+	                Log.i(al.getClass().getName().toString(), response.toString());
 		    	}
 		    }
     	} catch (URISyntaxException e) {
@@ -65,9 +68,9 @@ public class PostData<E>  extends AsyncTask<String, Void, String> {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-        
-		return response.toString();
+        if (response == null)
+        	return null;
+        else
+        	return response.toString();
 	}
-	
-
 }

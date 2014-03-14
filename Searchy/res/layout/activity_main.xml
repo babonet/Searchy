@@ -20,23 +20,23 @@
         android:layout_height="match_parent" >
 
         <EditText
-            android:id="@+id/editText1"
+            android:id="@+id/searchPhrase"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:ems="10"
             android:inputType="text" 
-            android:labelFor="@id/editText1">
+            android:labelFor="@id/searchPhrase">
 
             <requestFocus />
         </EditText>
 
         <Button
-            android:id="@+id/search"
+            android:id="@+id/searchBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/editText1"
+            android:layout_below="@+id/searchPhrase"
             android:layout_centerHorizontal="true"
             android:layout_marginTop="19dp"
             android:text="@string/search" />

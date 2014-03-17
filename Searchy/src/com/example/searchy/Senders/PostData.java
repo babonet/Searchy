@@ -35,17 +35,19 @@ public class PostData<E>  extends AsyncTask<String, Void, String> {
     	HttpPost req = new HttpPost();
     	
     	try {
-			req.setURI(new URI("http://192.168.0.103:64458/api/messages"));
+			
 		    req.addHeader("Content-Type", "application/json");
 		    for (E al: arrayList){
 		    	StringEntity se;
 		    	if (al.getClass().getName().toString().endsWith("Person")){
+		    		req.setURI(new URI("http://10.0.0.2:64458/api/contacts"));
 		    		se = new StringEntity(((Person) al).ToJSON().toString());
 	                req.setEntity(se);
 	                response = client.execute(req);
 	                Log.i(al.getClass().getName().toString(), response.toString());
 		    	}
 		    	if (al.getClass().getName().toString().endsWith("SMSMessage")){
+		    		req.setURI(new URI("http://10.0.0.2:64458/api/messages"));
 		    		se = new StringEntity(((SMSMessage) al).ToJSON().toString());
 	                req.setEntity(se);
 	                response = client.execute(req);

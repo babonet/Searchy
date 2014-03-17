@@ -34,7 +34,7 @@ public class PersonLoader {
 		String DATA = ContactsContract.CommonDataKinds.Email.DATA;
 		
 		ArrayList<Person> personList = new ArrayList<Person>();
-		Person person = new Person();
+		
 
 		ContentResolver contentResolver = con.getContentResolver();
 
@@ -45,6 +45,8 @@ public class PersonLoader {
 
 			while (cursor.moveToNext()) {
 
+				Person person = new Person();
+				
 				String contact_id = cursor.getString(cursor.getColumnIndex( _ID ));
 				String name = cursor.getString(cursor.getColumnIndex( DISPLAY_NAME ));
 				

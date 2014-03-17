@@ -17,7 +17,7 @@ public class PersonLoader {
 
 	public ArrayList<Person> fetchContacts() {
 
-		String phoneNumber = null ;
+		String phoneNumber = null;
 		String email = null;
 
 		Uri CONTENT_URI = ContactsContract.Contacts.CONTENT_URI;
